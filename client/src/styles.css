@@ -1,4 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import 'tailwindcss';
 @plugin "daisyui";
+
+@theme {
+  --color-primary: #7c3aed; /* purple-600 */
+  --color-primary-content: #ffffff;
+}
+
+/* DaisyUI theme */
+@plugin "daisyui/theme" {
+  name: 'mytheme';
+
+  --color-primary: #7c3aed;
+  --color-primary-content: #ffffff;
+
+  --color-secondary: #4f46e5; /* indigo-600 */
+  --color-secondary-content: #ffffff;
+
+  --color-accent: #a855f7; /* lighter purple */
+  --color-accent-content: #ffffff;
+
+  --color-base-100: #f9fafb;
+  --color-base-200: #f3f4f6;
+  --color-base-300: #e5e7eb;
+  --color-base-content: #1f2937;
+
+  --color-neutral: #1f2937;
+  --color-neutral-content: #ffffff;
+
+  --color-info: #3b82f6;
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+}
