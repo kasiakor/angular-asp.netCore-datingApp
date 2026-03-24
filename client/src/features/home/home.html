@@ -20,14 +20,18 @@
         <p class="py-6 text-base-content/80">Come on in... all you need to do is sign up</p>
 
         <div class="flex items-center gap-3">
-          <button (click)="showRegister()" class="btn btn-primary btn-lg">Register</button>
+          <button (click)="showRegister(true)" class="btn btn-primary btn-lg">Register</button>
           <button class="btn btn-outline btn-primary btn-lg">Learn more</button>
         </div>
       </div>
     </div>
   } @else {
     <div class="text-2xl text-center w-full flex justify-center">
-      <app-register class="block w-full max-w-lg" [membersFromHome]="membersFromApp"></app-register>
+      <app-register
+        class="block w-full max-w-lg"
+        [membersFromHome]="membersFromApp"
+        (cancelRegister)="showRegister($event)"
+      ></app-register>
     </div>
   }
 </div>
