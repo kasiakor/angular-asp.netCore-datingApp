@@ -1,6 +1,7 @@
-import { Component, input, output } from '@angular/core';
+import { Component, inject, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { IRegisterCreds, IUser } from '../../../types/user';
+import { AccountService } from '../../../core/services/account-service';
+import { IRegisterCreds } from '../../../types/user';
 
 @Component({
   selector: 'app-register',
@@ -9,13 +10,20 @@ import { IRegisterCreds, IUser } from '../../../types/user';
   styleUrl: './register.css',
 })
 export class Register {
-  membersFromHome = input.required<IUser[]>();
+  private accountService = inject(AccountService);
   cancelRegister = output<boolean>();
 
   protected creds = {} as IRegisterCreds;
 
   register() {
     console.log(this.creds);
+    this.accountService.register(this.creds).subscribe({
+      next: (response) => {
+        console.log(response);
+        this.cancel();
+      },
+      error: (error) => console.log(error),
+    });
   }
 
   cancel() {

@@ -1,5 +1,4 @@
-import { Component, Input, signal } from '@angular/core';
-import { IUser } from '../../types/user';
+import { Component, signal } from '@angular/core';
 import { Register } from '../account/register/register';
 
 @Component({
@@ -9,7 +8,6 @@ import { Register } from '../account/register/register';
   styleUrl: './home.css',
 })
 export class Home {
-  @Input({ required: true }) membersFromApp: IUser[] = [];
   protected registerMode = signal(false);
 
   showRegister(value: boolean) {
