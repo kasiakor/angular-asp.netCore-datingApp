@@ -1,3 +1,5 @@
 <app-nav></app-nav>
 
-<app-home [membersFromApp]="members()" />/>
+<div [class]="router.url !== '/' ? 'mt-24 container mx-auto' : ''">
+  <router-outlet />
+</div>
