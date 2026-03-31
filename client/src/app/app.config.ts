@@ -9,6 +9,7 @@ import {
 import { provideRouter, withViewTransitions } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { errorInterceptor } from '../core/interceptors/error-interceptor';
+import { jwtInterceptor } from '../core/interceptors/jwt-interceptor';
 import { InitService } from '../core/services/init-service';
 import { routes } from './app.routes';
 
@@ -17,7 +18,7 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideRouter(routes, withViewTransitions()),
-    provideHttpClient(withInterceptors([errorInterceptor])),
+    provideHttpClient(withInterceptors([errorInterceptor, jwtInterceptor])),
     provideAppInitializer(async () => {
       const initService = inject(InitService);
 
