@@ -8,8 +8,7 @@ import {
   RouterLinkActive,
   RouterOutlet,
 } from '@angular/router';
-import { filter, Observable } from 'rxjs';
-import { MemberService } from '../../../core/services/member-service';
+import { filter } from 'rxjs';
 import { IMember } from '../../../types/member';
 
 @Component({
@@ -19,14 +18,20 @@ import { IMember } from '../../../types/member';
   styleUrl: './member-detailed.css',
 })
 export class MemberDetailed implements OnInit {
-  private memberService = inject(MemberService);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
-  protected member$?: Observable<IMember>;
+  protected member = signal<IMember | undefined>(undefined);
   protected title = signal<string | undefined>('Profile');
 
   ngOnInit(): void {
-    this.member$ = this.loadMember();
+    //route.data - Observable that contains data attached to the route
+    //     data = {
+    //   member: (result from resolver)
+    // }
+    // this.route.data.subscribe({
+    //   next: (data) => this.member.set(data['member']),
+    // });
+    this.member.set(this.route.snapshot.data['member']);
     this.title.set(this.route.firstChild?.snapshot?.title);
 
     this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe({
@@ -34,11 +39,5 @@ export class MemberDetailed implements OnInit {
         this.title.set(this.route.firstChild?.snapshot?.title);
       },
     });
-  }
-
-  loadMember() {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (!id) return;
-    return this.memberService.getMember(id);
   }
 }
