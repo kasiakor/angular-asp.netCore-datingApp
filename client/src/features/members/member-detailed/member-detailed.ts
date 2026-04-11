@@ -1,4 +1,3 @@
-import { AsyncPipe } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import {
   ActivatedRoute,
@@ -13,7 +12,7 @@ import { IMember } from '../../../types/member';
 
 @Component({
   selector: 'app-member-detailed',
-  imports: [AsyncPipe, RouterLink, RouterLinkActive, RouterOutlet],
+  imports: [RouterLink, RouterLinkActive, RouterOutlet],
   templateUrl: './member-detailed.html',
   styleUrl: './member-detailed.css',
 })
