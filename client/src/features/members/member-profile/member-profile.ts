@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
@@ -5,7 +6,7 @@ import { map } from 'rxjs';
 
 @Component({
   selector: 'app-member-profile',
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './member-profile.html',
   styleUrl: './member-profile.css',
 })
