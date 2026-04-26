@@ -8,7 +8,7 @@
       class="card-actions z-50 absolute bg-linear-to-t from-purple-700 via-purple-500/80 to-transparent bottom-0 w-full px-3 py-1 rounded-b-lg"
     >
       <div class="flex flex-col text-white">
-        <span class="font-semibold">{{ member.displayName }}, 25</span>
+        <span class="font-semibold">{{ member.displayName }}, {{ member.dateOfBirth | age }}</span>
         <span class="text-sm">{{ member.city }}</span>
       </div>
     </div>
